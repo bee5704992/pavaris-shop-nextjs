@@ -50,7 +50,7 @@ const Users = () => {
                                 </th>
                                 <th>
                                     {
-                                        auth.user.root && auth.user.email !== user.email
+                                        auth.user?.root && auth.user.email !== user.email
                                         ? <Link href={`edit_user/${user._id}`}>
                                             <a><i className="fas fa-edit text-info mr-2" title="Edit"></i></a>
                                         </Link>
@@ -58,7 +58,7 @@ const Users = () => {
                                     }
 
                                     {
-                                        auth.user.root && auth.user.email !== user.email
+                                        auth.user?.root && auth.user.email !== user.email
                                         ? <i className="fas fa-trash-alt text-danger ml-2" title="Remove"
                                         data-toggle="modal" data-target="#exampleModal"
                                         onClick={() => dispatch({

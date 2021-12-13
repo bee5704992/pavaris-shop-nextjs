@@ -4,7 +4,6 @@ import {getData} from '../utils/fetchData'
 import {useRouter} from 'next/router'
 
 const Filter = ({state}) => {
-    const [title, setTitle] = useState('')
     const [search, setSearch] = useState('')
     const [sort, setSort] = useState('')
     const [category, setCategory] = useState('')
@@ -20,6 +19,10 @@ const Filter = ({state}) => {
     const handleSort = e => {
         setSort(e.target.value)
         filterSearch({router, sort: e.target.value})
+    }
+
+    const handleSearch = e => {
+        setSearch(e.target.value)
     }
 
     useEffect(()=>{
@@ -45,11 +48,11 @@ const Filter = ({state}) => {
             <form autoComplete="off" className="mt-2 col-md-8 px-0">
                 <input type="text" className="form-control" list="title_product" 
                 value={search.toLowerCase()}
-                onChange={e => setSearch(e.target.value)}/>
+                onChange={handleSearch}/>
 
-                <datalist id="title_product">
-                    <option value="name">Title Name</option>
-                </datalist>
+                {/*<datalist id="title_product">
+                    <option value={search}></option>
+                </datalist>*/}
 
                 <button className="position-absolute btn btn-info" type="submit"
                 style={{top:0, right:0, visibility: 'hidden'}}>
